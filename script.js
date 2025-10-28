@@ -10,7 +10,16 @@
       .then(response => response.json())
       .then(array => {
         console.log(array)
-        answer.innerHTML = JSON.stringify(array);
+        let tableHTML = '<table><thead><tr><th>ID</th><th>Tytuł</th><th>Treść</th></tr></thead><tbody>';
+        array.forEach(post => {
+          tableHTML += `<tr>
+            <td>${post.id}</td>
+            <td class="title">${post.title}</td>
+            <td class="body">${post.body}</td>
+          </tr>`;
+        });
+        tableHTML += '</tbody></table>';
+        answer.innerHTML = tableHTML;
       })
   })
 
